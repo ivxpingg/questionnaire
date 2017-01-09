@@ -1,0 +1,112 @@
+{
+    "data": [
+        {
+            "name": "问卷名称",
+            "startTime": "2016-12-12",
+            "endTime": "2016-12-12",
+            "statisticaObj": "家长、学校",
+            "title": "问卷标题",
+            "introduction": "引言",
+            "backgroundImage": "",
+            "releaseModule": [
+                {
+                    "moduleId": "001",
+                    "moduleName": "公交模块"
+                },
+                {
+                    "moduleId": "002",
+                    "moduleName": "集团模块"
+                },
+                {
+                    "moduleId": "003",
+                    "moduleName": "社会模块"
+                }
+            ],
+            "questions": [
+                {
+                    "index": "题标",
+                    "type": 1,
+                    "question": "填空题",
+                    "answers": [
+                        {
+                            "key": "A",
+                            "value": "系统答案值",
+                            "type": 2
+                        },
+                        {
+                            "key": "B",
+                            "value": "系统答案值",
+                            "type": 2
+                        },
+                        {
+                            "key": "c",
+                            "value": "系统答案值",
+                            "type": 3
+                        }
+                    ]
+                },
+                {
+                    "index": "题标",
+                    "type": 2,
+                    "question": "单选题",
+                    "answers": [
+                        {
+                            "key": "A",
+                            "value": "系统答案值",
+                            "type": 1
+                        },
+                        {
+                            "key": "B",
+                            "value": "系统答案值",
+                            "type": 1
+                        },
+                        {
+                            "key": "c",
+                            "value": "系统答案值",
+                            "type": 1
+                        }
+                    ]
+                },
+                {
+                    "index": "题标",
+                    "type": 4,
+                    "question": "多选题",
+                    "answers": [
+                        {
+                            "key": "A",
+                            "value": "系统答案值",
+                            "type": 1
+                        },
+                        {
+                            "key": "B",
+                            "value": "系统答案值",
+                            "type": 1
+                        },
+                        {
+                            "key": "c",
+                            "value": "系统答案值",
+                            "type": 1
+                        }
+                    ]
+                },
+                {
+                    "index": "题标",
+                    "type": 5,
+                    "question": "位置拾取",
+                    "answers": [
+                        {
+                            "key": "",
+                            "value": "用户填写",
+                            "type": 2
+                        },
+                        {
+                            "key": "",
+                            "value": "用户填写",
+                            "type": 2
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

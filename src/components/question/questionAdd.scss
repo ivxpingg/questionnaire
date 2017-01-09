@@ -1,0 +1,130 @@
+.container-questionAdd {
+    position: relative;
+}
+.fixed-top-panel {
+    position: fixed;
+    top: 80px;
+    right: 15px;
+    text-align: right;
+}
+
+.container-left {
+    width: 200px;
+}
+
+.container-right {
+    margin-left: 15px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    .qpage {
+        margin: 20px auto 0;
+        width: 1000px;
+    }
+}
+
+// 问题列表
+.question-list-box {
+    li {
+        padding: 0 30px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+}
+
+
+//
+.s-form-inline {
+
+    .control-label {
+        display: inline-block;
+        min-width: 65px;
+        text-align: left;
+    }
+
+    .s-from-group {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 0;
+        width: 80%;
+        vertical-align: middle;
+
+        > .form-control {
+            display: inline-block;
+            width: 75%;
+        }
+
+        > .input-group {
+        width: 350px;
+        }
+    }
+}
+
+.s-btn-add-item {
+    box-sizing: border-box;
+    width: 350px;
+    border: 1px dashed #e0e0e0;
+    padding: 6px 10px;
+    background: #fafafa;
+    color: #b2b2b2;
+    cursor: pointer;
+}
+
+.s-btn-add_other {
+    color: #2f8ddc;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.s-item-panel {
+    margin-top: 10px;
+    .btn {
+        margin-left: 15px;
+        width: 120px;
+    }
+}
+
+
+// 填空题
+.item-text-answer {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 38px;
+    .p-label{
+        font-weight: normal;
+
+    }
+    .p-form-control {
+        display: inline-block;
+        width: 220px;
+        border-width: 0 0 1px 0;
+        background-color: #FFF;
+    }
+}
+
+.font-color-red {
+    color: #f00;
+}
+
+// 位置拾取提
+.item-position-answer {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 38px;
+    .p-icon {
+        font-size: 22px;
+        vertical-align: sub;
+    }
+    .p-label{
+        font-weight: normal;
+    }
+    .p-form-control {
+        display: inline-block;
+        width: 220px;
+        border-width: 0 0 1px 0;
+        background-color: #FFF;
+    }
+}
+
+.waning-bg {
+    background-color: rgba(211, 44, 44, 0.26);
+}

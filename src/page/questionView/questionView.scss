@@ -1,0 +1,123 @@
+
+.qv-content {
+    height: 100%;
+    width: 100%;
+
+    .qv-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-image: url('./background1.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+
+        .qv-title {
+            margin: 45px 40px 0;
+            padding: 12px 0;
+            font-size: 42px;
+            font-weight: bold;
+            color: #040404;
+            text-align: center;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+    }
+
+    .qv-body {
+        position: relative;
+        margin: 236px 11px 15px;
+        min-height: 100%;
+        font-family: 'Microsoft YaHei';
+        box-sizing: border-box;
+
+        .qv-body-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #FFF;
+            opacity: 0.8;
+        }
+        .qu-popularity {
+           position: relative;
+           padding: 6px 15px;
+           text-align: right;
+           font-size: 14px;
+           color: #030303;
+           line-height: 36px;
+        }
+        .qv-list {
+            position: relative;
+            padding: 0 15px;
+        }
+        .qv-btn-panel {
+            position: relative;
+            margin: auto 11px 10px;
+            text-align: center;
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// .qv-list
+.qv-list {
+    .qv-q-box {
+        margin-bottom: 20px;
+        .q-title {
+            font-size: 16px;
+            color: #030303;
+            font-weight: bold;
+            .q-required {
+                padding-left: 3px;
+                color: #ff2b2b;
+                vertical-align: middle;
+            }
+        }
+        .option-box {
+
+            .option {
+                margin: 10px 0;
+                color: #3e3e3e;
+                .radio, .checkbox {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+// 表单
+.ipt-b-line {
+    padding-left: 1px;
+    border: 0;
+    border-bottom: 1px solid #3e3e3e;
+    background-color: transparent;
+
+    &.ipt-other {
+
+    }
+}
+
+// felx
+.qv-flex {
+    display: flex;
+}
+
+.qv-flex-item {
+    flex: 1;
+}
+
+.loading-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 50%;   
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 99;
+}
