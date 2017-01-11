@@ -3,7 +3,7 @@ var rou = require('./rou');
 var express = require('express');
 var router = express.Router();
 
-const DOMAIN = 'http://10.131.1.40:80';
+const DOMAIN = 'http://10.131.1.29:80';
 
 var rpGet = function (url, req, res) {
     var options = {
@@ -30,6 +30,9 @@ var rpPost = function (url, req, res) {
         //body: req.body,
         form:　req.body
     };
+    console.log(req.form);
+    console.log(req.body);
+    console.log(req.body.pageSize);
     new Promise(function(resolve, reject) {
         request(options, function (error, response, body) {
             if(error) { reject(error); }
