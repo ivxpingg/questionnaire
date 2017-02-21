@@ -195,8 +195,15 @@ export default {
                 this.param.pageSize = this.len;
                 // console.dir(this.param);
                 // var pa = {"active": this.activeNum, "lengths": this.len};
-
-                this.$http.post(rootUrl + this.url, this.param).then(function (response) {
+                // $.ajax({
+                //     url: rootUrl + this.url,
+                //     type: "POST",
+                //     data: this.param,
+                //     success: function (data) {
+                //         console.dir(data);
+                //     }
+                // })
+                this.$http.post(rootUrl + this.url, this.param, {emulateJSON: true}).then(function (response) {
                     if (response.body.resultCode === 1) {
                         this.pageTotal = Math.ceil(response.body.result.count / this.len);
                         this.getPages();

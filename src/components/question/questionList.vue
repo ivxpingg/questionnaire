@@ -138,7 +138,7 @@ export default {
             this.refresh();
         },
         updateQuestionnaire: function (param) {
-            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/updateQuestionnaire', param).then(function (response) {
+            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/updateQuestionnaire', param, {emulateJSON: true}).then(function (response) {
                 if (response.data.resultCode === 1) {
                     this.refresh();
                 }
@@ -151,7 +151,7 @@ export default {
         // 删除问卷
         delQuestion: function (id, name) {
             if (confirm('确定要删除<' + name + '>问卷?')) {
-                this.$http.post(rootUrl + 'questionnaire/api/questionnaire/deleteQuestionnaire', {'id': id}).then(function (response) {
+                this.$http.post(rootUrl + 'questionnaire/api/questionnaire/deleteQuestionnaire', {'id': id}, {emulateJSON: true}).then(function (response) {
                     if (response.body.resultCode === 1) {
                         this.refresh();
                         alert('删除成功!');

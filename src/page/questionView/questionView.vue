@@ -178,7 +178,7 @@ export default {
             this.save.questionnaireId = id;
             this.loadingShow = true;
             this.loadingTitle = "正在加载";
-            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/getQuestionnaireDetail', {'id': id}).then(function (response) {
+            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/getQuestionnaireDetail', {'id': id}, {emulateJSON: true}).then(function (response) {
                 this.loadingShow = false;
                 if (response.body.resultCode === 1) {
                     // 判断问卷是否可回收
@@ -368,7 +368,7 @@ export default {
             this.loadingShow = true;
             this.loadingTitle = "提交中";
             if (this.validateForm()) {
-                this.$http.post(rootUrl + 'questionnaire/api/questionnaire/pushPaperAnswer', {"paperAnswerJson": JSON.stringify(this.save)}).then(function (response) {
+                this.$http.post(rootUrl + 'questionnaire/api/questionnaire/pushPaperAnswer', {"paperAnswerJson": JSON.stringify(this.save)}, {emulateJSON: true}).then(function (response) {
                     this.loadingShow = false;
                     if (response.body.resultCode === 1) {
                         alert('提交成功!');
@@ -386,7 +386,7 @@ export default {
             }
         },
         addHit: function () {
-            this.$http.post(rootUrl + "questionnaire/api/questionnaire/addHits", {"id": this.id}).then(function (response) {});
+            this.$http.post(rootUrl + "questionnaire/api/questionnaire/addHits", {"id": this.id}, {emulateJSON: true}).then(function (response) {});
         }
     }
 }

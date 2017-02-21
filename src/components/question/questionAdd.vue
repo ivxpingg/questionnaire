@@ -8,7 +8,7 @@
         </ol>
         <!-- 顶部按钮 -->
         <div class="fixed-top-panel">
-             <button class="btn btn-default waves-effect waves-light"> <i class="fa fa-heart m-r-5"></i> <span>预览</span> </button>
+             <!-- <button class="btn btn-default waves-effect waves-light"> <i class="fa fa-heart m-r-5"></i> <span>预览</span> </button> -->
              <button class="btn btn-primary waves-effect waves-light" @click="saveQuestion">保存</button>
         </div>
         <div class="card-box container-left pull-left" id="container_left">
@@ -195,7 +195,7 @@ export default {
         },
         // 通过复制问卷添加问卷
         getQuestionById: function (id) {
-            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/getQuestionnaireDetail', {"id": id}).then(function (response) {
+            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/getQuestionnaireDetail', {"id": id}, {emulateJSON: true}).then(function (response) {
                 if (response.body.resultCode === 1) {
                     console.dir(response.body.result);
                     var data = response.body.result;
@@ -244,7 +244,7 @@ export default {
         },
         // 获取模块类别列表
         getModuleType: function () {
-            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/getModuleList').then(function (res) {
+            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/getModuleList', {}, {emulateJSON: true}).then(function (res) {
                 if (res.data.resultCode === 1) {
                     this.moduleList = res.data.result;
                 }
@@ -358,9 +358,9 @@ export default {
             reader.onload = function (e) {
                 var fileValue = e.target.result;
                  document.querySelector('.container-right').style.backgroundImage = "url('" + fileValue + "')";
-                 _v.$http.post(rootUrl + 'questionnaire/api/questionnaire/uploadImage', {'base64': fileValue}, {}).then(function (response) {
+                 _v.$http.post(rootUrl + 'questionnaire/api/questionnaire/uploadImage', {'base64': fileValue}, {emulateJSON: true}).then(function (response) {
                     // _v.$http.post('http://localhost:8080/questionnaire/api/questionnaire/uploadImage', {'form': {'base64': fileValue}}).then(function (response) {
-                    // console.dir(response.body);
+                    console.dir(response.body);
                 });
                 // console.log(fileValue);
                 // setValue(imgPreviewId, divPreviewId, fileValue,width, height,obj,browserVersion);
@@ -384,7 +384,7 @@ export default {
             };
             console.dir(data);
             // console.log(data.questionList[0].type);
-            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/addQuestionnaire', {'questionnaireJson': JSON.stringify(data)}, {}).then(function (response) {
+            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/addQuestionnaire', {'questionnaireJson': JSON.stringify(data)}, {emulateJSON: true}).then(function (response) {
                 if (response.body.resultCode === 1) {
                     alert('添加成功!');
                     let router = new VueRouter();

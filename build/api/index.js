@@ -30,6 +30,9 @@ var rpPost = function (url, req, res) {
         //body: req.body,
         form:　req.body
     };
+    console.log(req.form);
+    console.log(req.body);
+    console.log(req.body.pageSize);
     new Promise(function(resolve, reject) {
         request(options, function (error, response, body) {
             if(error) { reject(error); }

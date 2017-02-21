@@ -109,6 +109,8 @@ export default {
                 "questionnaireId": this.id,
                 "beginDate": this.beginDate,
                 "endDate": this.endDate
+            }, {
+                emulateJSON: true
             }).then(function (response) {
                 if (response.body.resultCode === 1) {
                     this.hitData.xAxis.data = response.body.result.xAxis;
@@ -134,6 +136,8 @@ export default {
                 "questionnaireId": this.id,
                 "beginDate": this.beginDate,
                 "endDate": this.endDate
+            }, {
+                emulateJSON: true
             }).then(function (response) {
                 if (response.body.resultCode === 1) {
                     this.pageCount.xAxis.data = response.body.result.xAxis;
@@ -153,7 +157,11 @@ export default {
         // 获取问卷要统计的信息
         getQuestionInfo: function () {
             // this.questionInfo = [{id: '12', type: "5", question: "地图"}];
-            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/rpt/getQuestionList', {"questionnaireId": this.id}).then(function (response) {
+            this.$http.post(rootUrl + 'questionnaire/api/questionnaire/rpt/getQuestionList', {
+                "questionnaireId": this.id
+            }, {
+                emulateJSON: true
+            }).then(function (response) {
                 if (response.body.resultCode === 1) {
                     this.questionInfo = response.body.result;
                 }
