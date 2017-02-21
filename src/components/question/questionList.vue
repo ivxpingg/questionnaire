@@ -49,7 +49,7 @@
                                   <td>
                                        <!-- <a @click="editQuestion(data)">编辑问卷</a> -->
                                        <router-link :to="'/questionAdd/' + data.id + '/yes'"><span>编辑问卷</span></router-link>
-                                       <a @click="copyLinkAddress($event, data.id)">复制链接</a>
+                                       <a class="clipboard-a" :data-clipboard-text="rootUrlView + data.id">复制链接</a>
                                        <a v-if="data.status == '1'" @click="updateStatus(data.id, '2')">暂停回收</a>
                                        <a v-else @click="updateStatus(data.id, '1')">开始回收</a>
                                        <a v-if="data.isPublish == '1'" @click="updatePublish(data.id, '0')">取消发布</a>
@@ -84,6 +84,7 @@
 
 <script type="text/javascript">
 import bootPage from 'components/bootPage/bootPage';
+import Clipboard from 'clipboard';
 import {rootUrl} from 'common/js/config';
 export default {
     data: function () {
@@ -100,8 +101,17 @@ export default {
             tableList: [] // 分页组件传回的分页后数据
         };
     },
-    created: function () {},
+    created: function () {
+        this.rootUrlView = rootUrl + '#/questionview/';
+    },
     components: {bootPage},
+    mounted: function () {
+        var cb = new Clipboard('.clipboard-a');
+        cb.on('success', function (data) {
+             alert('已复制到粘贴板');
+        });
+        cb.destroy();
+    },
     methods: {
         search: function () {
             // console.dir(this.$refs.iptSearch.value);

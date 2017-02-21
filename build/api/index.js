@@ -3,7 +3,7 @@ var rou = require('./rou');
 var express = require('express');
 var router = express.Router();
 
-const DOMAIN = 'http://10.131.1.40:80';
+const DOMAIN = 'http://10.131.1.222:8080';
 
 var rpGet = function (url, req, res) {
     var options = {
