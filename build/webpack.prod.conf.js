@@ -8,6 +8,22 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
 
+let glob = require('glob');
+
+var getEntry = (globPath) => {
+    var entries = {},
+        basename,
+        tmp,
+        pathname;
+    glob.sync(globPath).forEach((entry) => {
+        basename = path.basename(entry, path.extname(entry));
+        tmp = entry.split('/').splice(-3);
+        pathname = tmp.splice(0, 1) + '\/' + basename; // 正确输出js和html的路径
+        entries[pathname] = entry;
+    });
+    return entries;
+};
+
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
@@ -40,20 +56,20 @@ var webpackConfig = merge(baseWebpackConfig, {
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: config.build.index,
-      template: 'index.html',
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: config.build.index,
+    //   template: 'index.html',
+    //   inject: true,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeAttributeQuotes: true
+    //     // more options:
+    //     // https://github.com/kangax/html-minifier#options-quick-reference
+    //   },
+    //   // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    //   chunksSortMode: 'dependency'
+    // }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -96,3 +112,24 @@ if (config.build.productionGzip) {
 }
 
 module.exports = webpackConfig
+
+var pages = getEntry('./src/module/**/*.html');
+console.dir(pages);
+for (var pathname in pages) {
+  // 配置生成的html文件，定义路径等
+  var conf = {
+    filename: pathname.split('/')[1] + '.html',
+    template: pages[pathname], // 模板路径
+    chunks: [pathname, 'vendor', 'manifest'], // 每个html引用的js模块
+    inject: true,              // js插入位置
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+      // more options:
+      // https://github.com/kangax/html-minifier#options-quick-reference
+    }
+  };
+  // 需要生成几个html文件，就配置几个HtmlWebpackPlugin对象
+  module.exports.plugins.push(new HtmlWebpackPlugin(conf));
+}

@@ -28,6 +28,7 @@
                       <router-link class="btn-primary btn-md btn waves-effect waves-light pull-right" to="/questionAdd">添加</router-link>
                   </div>
                   <div class="table-box">
+                      <div class="clipboard-a" style="font-size:0;"> </div>
                       <table class="table table-hover table-bordered">
                           <thead>
                               <tr>
@@ -101,16 +102,24 @@ export default {
             tableList: [] // 分页组件传回的分页后数据
         };
     },
-    created: function () {
-        this.rootUrlView = rootUrl + '#/questionview/';
-    },
-    components: {bootPage},
     mounted: function () {
         var cb = new Clipboard('.clipboard-a');
         cb.on('success', function (data) {
              alert('已复制到粘贴板');
         });
-        cb.destroy();
+    },
+
+    created: function () {
+        this.rootUrlView = rootUrl + 'wx.html#/';
+    },
+    components: {bootPage},
+    computed: {
+
+    },
+    updated: function () {
+        // document.querySelectorAll('.clipboard-a').forEach(function (dom) {
+        //     dom.removeEventListener('click');
+        // });
     },
     methods: {
         search: function () {

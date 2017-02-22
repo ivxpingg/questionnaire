@@ -4,6 +4,24 @@ var webpack = require('webpack')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
 
+let glob = require('glob');
+function getEntry (globPath) {
+    var entries = {},
+        basename,
+        tmp,
+        pathname;
+    glob.sync(globPath).forEach((entry) => {
+
+        basename = path.basename(entry, path.extname(entry));
+        tmp = entry.split('/').splice(-3);
+        pathname = tmp.splice(0, 1) + '\/' + basename; // 正确输出js和html的路径
+        entries[pathname] = entry;
+    });
+    return entries;
+};
+
+let entries = getEntry('./src/module/**/*.js');
+
 var env = process.env.NODE_ENV
 // check env & config/index.js to decide whether to enable CSS source maps for the
 // various preprocessor loaders added to vue-loader at the end of this file
@@ -12,9 +30,10 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
+  // entry: {
+  //   app: './src/main.js'
+  // },
+  entry: entries,
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,

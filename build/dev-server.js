@@ -51,6 +51,13 @@ app.use(bodyParser.json());
 //     });
 // });
 
+app.get('/main', function (req, res) {
+    res.send('module/main.html');
+});
+app.get('/wx', function (req, res) {
+    res.sendFile(path.join(__dirname,"../dist/module/wx.html"));
+});
+
 app.use('/', router);
 
 var compiler = webpack(webpackConfig);
