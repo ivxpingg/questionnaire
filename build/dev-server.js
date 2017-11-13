@@ -22,34 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-// var appData = require('../testData/data.json');
-// var tableData = require('../testData/table.json');
-
-// var apiRoutes = express.Router();
-// apiRoutes.get('/tableData', function (req,res) {
-//     var query = req.query;
-//     var active = parseInt(req.query.active) - 1;
-//     var len = parseInt(req.query.lengths);
-//     var start = active * len;
-//     var end = start + len;
-//
-//     var dat = tableData.data.slice(start,  end);
-//     console.dir(query);
-//     console.dir(start);
-//     console.dir(end);
-//
-//     res.json({
-//         data: dat,
-//         page_num: tableData.data.length
-//     });
-// });
-// apiRoutes.post('/tableData', function (req,res) {
-//     console.dir(req);
-//     res.json({
-//         data: tableData.data,
-//         page_num: tableData.data.length
-//     });
-// });
 
 app.get('/main', function (req, res) {
     res.send('module/main.html');

@@ -82,5 +82,17 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
+.topbar {
+    display: none;
+}
+.side-menu {
+    display: none;
+}
+.content-page {
+    margin-left: 0;
+    > .content {
+        margin-top: 0;
+    }
+}
 </style>

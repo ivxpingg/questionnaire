@@ -9,7 +9,7 @@
         <!-- 顶部按钮 -->
         <div class="fixed-top-panel">
              <!-- <button class="btn btn-default waves-effect waves-light"> <i class="fa fa-heart m-r-5"></i> <span>预览</span> </button> -->
-             <button class="btn btn-primary waves-effect waves-light" @click="saveQuestion">保存</button>
+             <!-- <button class="btn btn-primary waves-effect waves-light" @click="saveQuestion">保存</button> -->
         </div>
         <div class="card-box container-left pull-left" id="container_left">
             <h4>题目控件</h4>
@@ -199,7 +199,7 @@ export default {
                 if (response.body.resultCode === 1) {
                     console.dir(response.body.result);
                     var data = response.body.result;
-                    this.name = data.name;
+                    this.name = data.name + "(副本)";
                     this.startDate = data.startDate;
                     this.endDate = data.endDate;
                     this.statisticalObj = data.statisticalObj;

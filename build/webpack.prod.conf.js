@@ -118,7 +118,7 @@ console.dir(pages);
 for (var pathname in pages) {
   // 配置生成的html文件，定义路径等
   var conf = {
-    filename: pathname.split('/')[1] + '.html',
+    filename: pathname + '.html',
     template: pages[pathname], // 模板路径
     chunks: [pathname, 'vendor', 'manifest'], // 每个html引用的js模块
     inject: true,              // js插入位置

@@ -46,7 +46,11 @@
                                   <td v-text="data.startDate + '~' + data.endDate"></td>
                                   <td v-text="data.modules"></td>
                                   <td v-text="data.paperCount"></td>
-                                  <td v-text="data.name"></td>
+                                  <td v-if="data.status === '1'">正常</td>
+                                  <td v-else-if="data.status === '2'">暂停</td>
+                                  <td v-else-if="data.status === '3'">延长回收</td>
+                                  <td v-else></td>
+                                  <!-- <td v-text="data.status"></td> -->
                                   <td>
                                        <!-- <a @click="editQuestion(data)">编辑问卷</a> -->
                                        <router-link :to="'/questionAdd/' + data.id + '/yes'"><span>编辑问卷</span></router-link>
@@ -103,14 +107,14 @@ export default {
         };
     },
     mounted: function () {
+    },
+    created: function () {
+        this.rootUrlView = rootUrl + 'wx.html#/';
+        $(document.body).off('click');
         var cb = new Clipboard('.clipboard-a');
         cb.on('success', function (data) {
              alert('已复制到粘贴板');
         });
-    },
-
-    created: function () {
-        this.rootUrlView = rootUrl + 'wx.html#/';
     },
     components: {bootPage},
     computed: {
@@ -172,6 +176,10 @@ export default {
 }
 </script>
 
-<style lang="css">
-
+<style lang="scss">
+.table-box {
+    a {
+        cursor: pointer;
+    }
+}
 </style>

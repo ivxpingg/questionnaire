@@ -14,14 +14,17 @@ let router = new VueRouter({
         path: '/questionList',
         component: questionList
     }, {
-        path: '/questionStatistics/:id',
-        component: questionStatistics
+          path: '/questionStatistics/:id',
+          component: questionStatistics
     }, {
-        path: '/questionAdd',
-        component: questionAdd
+          path: '/questionAdd',
+          component: questionAdd
     }, {
-        path: '/questionAdd/:id/:edit',
-        component: questionAdd
+          path: '/questionAdd/:id',
+          component: questionAdd
+    }, {
+          path: '/questionAdd/:id/:edit',
+          component: questionAdd
     }]
 });
 
